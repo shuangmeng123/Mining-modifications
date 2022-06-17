@@ -33,7 +33,7 @@ onEvent('block.modification', event => {
 	//矿块
 	let block = ['amethyst'].concat(ore).map(a => a + '_block');
 	//粗矿块
-	let block_raw = ['iron', 'copper', 'glod'].map(a => 'raw_' + a + 'block')
+	let block_raw = ['iron', 'copper', 'glod'].map(a => `raw_${a}block`)
 	//功能性方块
 	let table = ['crafting_table', 'bookshelf', 'beehive', 'fletching_table', 'lectern', 'barrel', 'cartography_table', 'chest', 'jukebox', 'note_block', 'smithing_table', 'loom']//木制方块
 	let furnace = ['furnace', 'blast_furnace', 'smoker', 'grindstone','lodestone']//炉子,砂轮,磁石 
@@ -76,11 +76,11 @@ onEvent('block.modification', event => {
 	blockModify(block_a)//此数值是更改下界合金块的破坏速度
 	blockModify(anwil,20)//此数值是修改金属制的功能性方块
 	//特殊
-	let plate_weighted = ('light', 'heavy').map(a => a + '_weighted_pressure_plate')
-	let plate_stone = ('stone').map(a => a + '_pressure_plate')
+	let plate_weighted = ['light', 'heavy'].map(a => a + '_weighted_pressure_plate')
+	let plate_stone = ['stone'].map(a => a + '_pressure_plate')
 	let plate = plate_stone.concat(plate_weighted)
 	blockModify(plate, 10)
-	let iron = ('trapdoor', 'bars', 'door').map(a => 'iorn_' + a)
+	let iron = ['trapdoor', 'bars', 'door'].map(a => 'iorn_' + a)
 	blockModify(iron, 20)
 	//铜
 	let state = ['exposed', 'weathered', 'oxidized']
