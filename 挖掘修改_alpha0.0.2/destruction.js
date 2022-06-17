@@ -1,20 +1,3 @@
-/* 挖掘修改
-	版本：alpha 0.0.2
-	增添内容: 
-			1. 增加了原版常用的分类素材
-			2. 增加了矿物挖掘的速度修改
-			3. 增加了木制方块挖掘速度的修改
-			3. 增加了石制方块挖掘速度的修改
-			4. 增加了其他可互动方块挖掘速度的修改
-			5. 增加了有关颜色方块挖掘速度的修改
-			6. 订正和修复了少量特性
-	=================================================================
-		ps:感谢诸位群友的帮助与支持,并且本js将完全开源可自由使用 
-		但还是希望能够给各位提供帮助                                   
-	=================================================================
-	如果对该插件有疑问可联系本人qq:2976603013 
-	    qq群：456426894
-*/
 onEvent('block.modification', event => {
 	function blockModify(blockList, destroySpeed) {
 		for (let b of blockList) {
@@ -91,6 +74,7 @@ onEvent('block.modification', event => {
 	blockModify(block_all, 20)//此数值为更改矿块的破坏速度
 	let block_a = ore_other.map(a => a + '_block')
 	blockModify(block_a)//此数值是更改下界合金块的破坏速度
+	blockModify(anwil,20)//此数值是修改金属制的功能性方块
 	//特殊
 	let plate_weighted = ('light', 'heavy').map(a => a + '_weighted_pressure_plate')
 	let plate_stone = ('stone').map(a => a + '_pressure_plate')
