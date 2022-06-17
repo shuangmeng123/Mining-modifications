@@ -36,7 +36,7 @@ onEvent('block.modification', event => {
 	let block_raw = ['iron', 'copper', 'glod'].map(a => 'raw_' + a + 'block')
 	//功能性方块
 	let table = ['crafting_table', 'bookshelf', 'beehive', 'fletching_table', 'lectern', 'barrel', 'cartography_table', 'chest', 'jukebox', 'note_block', 'smithing_table', 'loom']//木制方块
-	let furnace = ['furnace', 'blast_furnace', 'smoker', 'grindstone']//炉子，砂轮
+	let furnace = ['furnace', 'blast_furnace', 'smoker', 'grindstone','lodestone']//炉子,砂轮,磁石 
 	let anwil = ['anvil', 'shipped_anvil', 'damaged_anvil']//铁砧
 	//木 破坏调整
 	let all_wood = wooden.concat(hyphae);
@@ -93,12 +93,14 @@ onEvent('block.modification', event => {
 	let copper_1 = ['copper_block', 'waxed_copper_block']
 	let copper_all = copper.concat(cut_copper).concat(waxed_copper_0).concat(waxed_copper_1).concat(other_copper).concat(copper_1).concat(copper_stairs)
 	blockModify(copper_all, 20)//此数值为更改铜块以及其衍生物的破坏速度 
-	//地狱矿石
-	let nether = ore_nether
-	blockModify(nether, 19)//此数值为更改下界原矿的破坏速度
+	//下界矿石
+	blockModify(ore_nether, 19)//此数值为更改下界原矿的破坏速度
 	blockModify(ore_other, 21)//此数值是更改远古残骸的破坏速度
+	//下界岩石
+	let netherrack = ['netherrack'].concat(mylium)
+	blockModify(netherrack, 19)
 	//石英
-	let quartz_0 = ['block', 'pillar', 'bricks'].map(a => 'quartz' + a)
+	let quartz_0 = ['block', 'pillar', 'bricks'].map(a => 'quartz_' + a)
 	let quartz_1 = ['chiseled_quartz_block', 'smooth_quartz']
 	let quartz = quartz_0.concat(quartz_1)
 	blockModify(quartz, 19)//此数值是更改石英块以及其衍生物的破坏速度
@@ -134,15 +136,39 @@ onEvent('block.modification', event => {
 	let terraccotta = color.map(a => a + '_terracotta')
 	let terraccotta_glazed = color.map(a => a + '_glazed_terracotta')
 	let terraccotta_all = ['terraccotta'].concat(terraccotta).concat(terraccotta_glazed)
-	blockModify(terraccotta_all, 20)
+	blockModify(terraccotta_all, 20);
 	//玻璃
-	let stained_glass = color.map(a => a + '_stained_glass')
-	let stained_glass_pane = stained_glass.map(a => a + '_pane')
-	let glass = ['glass_pane', 'glass']
-	let all_glass = stained_glass.concat(stained_glass_pane).concat(glass)
-	blockModify(all_glass, 15)
+	let stained_glass = color.map(a => a + '_stained_glass');
+	let stained_glass_pane = stained_glass.map(a => a + '_pane');
+	let glass = ['glass_pane', 'glass'];
+	let all_glass = stained_glass.concat(stained_glass_pane).concat(glass);
+	blockModify(all_glass, 15);
 	//旗帜
-	let bannder = color.map(a => a + 'bannder')
-	let all_bander=['bander'].concat(bannder)
-	blockModify(all_bander,13)
+	let bannder = color.map(a => a + 'bannder');
+	let all_bander = ['bander'].concat(bannder);
+	blockModify(all_bander, 13);
+	//土质方块
+	let dirt = ['coarse', 'rooted'].map(a => a + '_dirt');
+	let dirt_0 = ['grass_block', 'dirt', 'mycelium', 'dirt_path', 'farmland', 'caly', 'soul_soil'];
+	let all_dirt = dirt.concat(dirt_0);
+	blockModify(all_dirt, 15);
+	//砖
+	let brick = ['bricks'];
+	let brick_stone = ['cracked', 'mossy', 'chiseled'].map(a => a + '_stone');
+	let nether_bricks = ['red_nether', 'nether']
+	let nether = ['nether', 'chiseled', 'cracked']
+	let deepslate = ['deepslate', 'cracked_deepslate']
+	let polished_blackstone = ['cracked_polished_blackstone', 'polished_blackstone']
+	let end = ['end_stone']
+	let tiles = deepslate.map(a => a + '_tiles')
+	let bricks = brick_stone.concat(nether_bricks).concat(nether).concat(deepslate).concat(polished_blackstone).concat(end).concat(tiles)
+	let bricks_all = bricks.map(a => a + '_bricks')
+	let bricks_wall = bricks_all.map(a => a + '_wall');
+	let bricks_slab = bricks_all.map(a => a + '_slab')
+	let bricks_stairs = bricks_all.map(a => a + '_stairs')
+	let bricks_fence = bricks_all.map(a => a + '_fence')
+	let purpur = ['block', 'pillar'].map(a => 'purpur_' + a)
+	let purpur_all = ['slab', 'stairs'].map(a => 'purpur_' + a)
+	let alls_bricks = end.concat(bricks_all).concat(bricks_wall).concat(bricks_slab).concat(bricks_stairs).concat(bricks_fence).concat(purpur).concat(purpur_all)
+	blockModify(alls_bricks,20)
 });
